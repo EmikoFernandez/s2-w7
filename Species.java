@@ -3,17 +3,17 @@
  */
 public class Species {
     private String name;
-    private long population;
+    private int population;
     private double birthRate;
     private double deathRate;
-    private long habitatCapacity;
+    private int habitatCapacity;
     private String location;
     
     /**
      * Constructor for Species
      */
-    public Species(String name, long population, double birthRate, 
-                   double deathRate, long habitatCapacity, String location) {
+    public Species(String name, int population, double birthRate, 
+                   double deathRate, int habitatCapacity, String location) {
         this.name = name;
         this.population = population;
         this.birthRate = birthRate;
