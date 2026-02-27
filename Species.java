@@ -27,7 +27,7 @@ public class Species {
         return name;
     }
     
-    public long getPopulation() {
+    public int getPopulation() {
         return population;
     }
     
@@ -39,7 +39,7 @@ public class Species {
         return deathRate;
     }
     
-    public long getHabitatCapacity() {
+    public int getHabitatCapacity() {
         return habitatCapacity;
     }
     
@@ -48,7 +48,7 @@ public class Species {
     }
     
     // Setters
-    public void setPopulation(long population) {
+    public void setPopulation(int population) {
         this.population = population;
     }
     
@@ -57,12 +57,18 @@ public class Species {
      * Population change = (births - deaths) but capped at habitat capacity
      */
     public void simulateYear() {
-        //TODO
+        population = (int)(this.population + (this.population * birthRate) - (this.population * deathRate));
+        if(population > habitatCapacity){
+            population = habitatCapacity;
+        }
+        //System.out.println("Simulate one year:" + this.name);
+       
     }
     
     /**
      * Return formatted string representation of the species
      */
+
     public String toString() {
         return String.format("%s: %,d (Location: %s)", name, population, location);
     }

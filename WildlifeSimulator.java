@@ -24,6 +24,9 @@ public class WildlifeSimulator {
      */
     public void simulateYear() {
         //TODO
+        for(int i = 0; i < speciesCount; i++){
+            species[i].simulateYear();
+        }
     }
     
     /**
@@ -31,6 +34,9 @@ public class WildlifeSimulator {
      */
     public void simulate(int years) {
         //TODO
+        for(int i = 0; i < years; i++){
+            simulateYear();
+        }
     }
     
     /**
@@ -38,7 +44,7 @@ public class WildlifeSimulator {
      */
     public Species getSpecies(int index) {
         //TODO
-        return null;
+        return species[index];
     }
     
     /**
@@ -62,7 +68,11 @@ public class WildlifeSimulator {
      */
     public double getTotalPopulation() {
         //TODO
-        return 0.0;
+        double total = 0;
+        for(int i = 0; i < speciesCount; i++){
+            total += species[i].getPopulation();
+        }
+        return total;
     }
     
     /**
