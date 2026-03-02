@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 /**
  * WildlifeSimulator - Manages population dynamics for multiple species
  * Uses an array of Species objects to store and simulate species data
@@ -25,6 +28,7 @@ public class WildlifeSimulator {
     public void simulateYear() {
         //TODO
         for(int i = 0; i < speciesCount; i++){
+            if(species[i] != null)
             species[i].simulateYear();
         }
     }
@@ -37,6 +41,18 @@ public class WildlifeSimulator {
         for(int i = 0; i < years; i++){
             simulateYear();
         }
+    }
+
+    public void writeYear(int year){
+        String filename = "year_" + year + ".txt";
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+        for (int i = 0; i < speciesCount; i++) {
+            writer.write(species[i].toString());
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        System.err.println("Error writing to file: " + e.getMessage());
+    }
     }
     
     /**
@@ -80,7 +96,13 @@ public class WildlifeSimulator {
      */
     public int getMostPopulousIndex() {
         //TODO
-        return -1;
+        int maxPopIndex = 0;
+        for (int x = 1; x< this.speciesCount; x++){
+            if(this.species[maxPopIndex].getPopulation() < this.species[x].getPopulation()){
+                maxPopIndex = x;
+            }
+        }
+        return maxPopIndex;
     }
     
     /**
@@ -88,7 +110,13 @@ public class WildlifeSimulator {
      */
     public int getMostEndangeredIndex() {
         //TODO
-        return -1;
+        int minPopIndex = 0;
+        for (int x = 1; x < this.speciesCount; x++){
+            if(this.species[minPopIndex].getPopulation() > this.species[x].getPopulation()){
+                minPopIndex = x;
+            }
+        }
+        return minPopIndex;
     }
     
     public int getSpeciesCount() {

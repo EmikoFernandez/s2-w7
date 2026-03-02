@@ -60,7 +60,8 @@ public class WildlifeSimulatorRunner {
         int mostPopulous = simulator.getMostPopulousIndex();
         int mostEndangered = simulator.getMostEndangeredIndex();
         
-        
+        System.out.println("Largest: " + simulator.getSpecies(mostPopulous));
+        System.out.println("Endangered: " + simulator.getSpecies(mostEndangered));
                 
         System.out.println("\nSimulation complete!");
     }
